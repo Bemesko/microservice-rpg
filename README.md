@@ -14,3 +14,9 @@ Sample project for studying microservices in .NET. Consists of several backend s
 - Data Transfer Objects
   - Represent a contract between a microservice API and the client
   - Essentially they are the response for an API'S entity
+- Record Types vs. Classes
+  - Simpler to declare
+  - Value-based equality
+    - Two records are the same if they have the same values on all fields
+  - Immutable by default
+  - Built in `ToString()` override
