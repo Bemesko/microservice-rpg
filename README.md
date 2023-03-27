@@ -20,3 +20,9 @@ Sample project for studying microservices in .NET. Consists of several backend s
     - Two records are the same if they have the same values on all fields
   - Immutable by default
   - Built in `ToString()` override
+- Controller classes are instantiated everytime someone calls one of their methods, so non-static properties will be recreated everytime the endpoints are called
+- One more way to get elements in a List: `list.Where(o => o.Id == id)`
+  - Don't forget about `Find`, `FirstOrDefault` and `SingleOrDefault`
+
+### Look up Later
+- DateTime vs. DateTimeOffset
