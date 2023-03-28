@@ -23,6 +23,15 @@ Sample project for studying microservices in .NET. Consists of several backend s
 - Controller classes are instantiated everytime someone calls one of their methods, so non-static properties will be recreated everytime the endpoints are called
 - One more way to get elements in a List: `list.Where(o => o.Id == id)`
   - Don't forget about `Find`, `FirstOrDefault` and `SingleOrDefault`
+- Really weird syntax for changing a record:
+```csharp
+var updatedItem = existingItem with
+{
+    Name = updateItemDto.Name,
+    Description = updateItemDto.Description,
+    Price = updateItemDto.Price
+};
+```
 
 ### Look up Later
 - DateTime vs. DateTimeOffset

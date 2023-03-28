@@ -1,3 +1,3 @@
-@Id = a73cd2dc-067e-40ce-91e2-d8ada2366dab
+@Id = 748e3dc9-224e-44d3-a345-1dd67e494e83
 
 GET http://localhost:5062/api/Items/{{Id}}

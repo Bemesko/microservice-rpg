@@ -36,4 +36,31 @@ public class ItemsController : ControllerBase
 
         return CreatedAtAction(nameof(Get), new { id = item.Id }, item);
     }
+
+    [HttpPut("{id}")]
+    public IActionResult Put(Guid id, UpdateItemDto updateItemDto)
+    {
+        var existingItem = items.Where(item => item.Id == id).SingleOrDefault();
+
+        var updatedItem = existingItem with
+        {
+            Name = updateItemDto.Name,
+            Description = updateItemDto.Description,
+            Price = updateItemDto.Price
+        };
+
+        var index = items.FindIndex(existingItem => existingItem.Id == id);
+        items[index] = updatedItem;
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(Guid id)
+    {
+        var index = items.FindIndex(existingItem => existingItem.Id == id);
+        items.RemoveAt(index);
+
+        return NoContent();
+    }
 }
