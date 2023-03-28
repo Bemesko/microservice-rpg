@@ -4,7 +4,7 @@ Sample project for studying microservices in .NET. Consists of several backend s
 
 **Link to Tutorial:** https://www.youtube.com/watch?v=CqCDOosvZIk
 
-## Tutorial Notes
+## Tutorial Notes, Day 1
 
 **Link to Tutorial:** https://www.youtube.com/watch?v=CqCDOosvZIk
 - Note: the tutorial is made with .NET 5 in mind, but I'll use .NET 7 anyway because I'm not scared of some divergences from the course.
@@ -23,6 +23,9 @@ Sample project for studying microservices in .NET. Consists of several backend s
 - Controller classes are instantiated everytime someone calls one of their methods, so non-static properties will be recreated everytime the endpoints are called
 - One more way to get elements in a List: `list.Where(o => o.Id == id)`
   - Don't forget about `Find`, `FirstOrDefault` and `SingleOrDefault`
+
+---
+## Tutorial Notes, Day 2
 - Really weird syntax for changing a record:
 ```csharp
 var updatedItem = existingItem with
@@ -32,10 +35,9 @@ var updatedItem = existingItem with
     Price = updateItemDto.Price
 };
 ```
+- The tutorial guy is returning an `ActionResult` directly instead of an `IActionResult`, I'm doing it differently because using the interface is probably better
 
 ### Look up Later
 - DateTime vs. DateTimeOffset
 
 ---
-
-*Tutorial Checkpoint:* 1:04:59
