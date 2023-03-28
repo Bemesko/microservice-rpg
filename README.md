@@ -36,14 +36,24 @@ var updatedItem = existingItem with
 };
 ```
 - The tutorial guy is returning an `ActionResult` directly instead of an `IActionResult`, I'm doing it differently because using the interface is probably better
-- Error handling
-  - Common errors that can occur
-    - Searching for something that doesn't exist
-      - Null checking
-    - Trying to add something with wrong values
-      - Model validation (native to .NET)
+- Common errors that can occur and how to solve them
+  - Searching for something that doesn't exist (404, not found)
+    - Null checking
+  - Trying to add something with wrong values (400, bad request)
+    - Model validation (native to .NET)
+- Repository pattern
+  - Abstraction that sits between the data and business layers and decouples one from the other
+  - If the app switches database, only the repository will be affected
+- Did I mention I'll be using MongoDB for these apps?
+  - NoSQL database
+  - Stores JSON-like documents with a dynamic schema
+  - Reasons to use it
+    - Won't need relationships across the data
+    - Won't need ACID (Atomicity, Consistency, Isolation, Durability) guarantees
+    - No complex queries
+    - Need low latency, high availability and high scalability
 
-### Look up Later
+## Look up Later
 - DateTime vs. DateTimeOffset
 
 ---
