@@ -20,9 +20,20 @@ public class ItemsController : ControllerBase
         return items;
     }
 
+    //TODO: make this return an IActionResult
     [HttpGet("{id}")]
     public ItemDto Get(Guid? id)
     {
         return items.FirstOrDefault(item => item.Id == id);
+    }
+
+    [HttpPost]
+    public IActionResult Post(CreateItemDto createItemDto)
+    {
+        var item = new ItemDto(Guid.NewGuid(), createItemDto.Name, createItemDto.Description, createItemDto.Price, DateTimeOffset.UtcNow);
+
+        items.Add(item);
+
+        return CreatedAtAction(nameof(Get), new { id = item.Id }, item);
     }
 }
