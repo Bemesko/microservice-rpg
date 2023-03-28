@@ -36,6 +36,12 @@ var updatedItem = existingItem with
 };
 ```
 - The tutorial guy is returning an `ActionResult` directly instead of an `IActionResult`, I'm doing it differently because using the interface is probably better
+- Error handling
+  - Common errors that can occur
+    - Searching for something that doesn't exist
+      - Null checking
+    - Trying to add something with wrong values
+      - Model validation (native to .NET)
 
 ### Look up Later
 - DateTime vs. DateTimeOffset
