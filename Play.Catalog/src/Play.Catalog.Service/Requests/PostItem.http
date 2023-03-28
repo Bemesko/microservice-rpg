@@ -1,0 +1,8 @@
+POST http://localhost:5062/api/items HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Apple",
+    "description": "Repels doctors for a 24 hour period after consumption",
+    "price": 1
+}
