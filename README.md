@@ -26,3 +26,7 @@ Sample project for studying microservices in .NET. Consists of several backend s
 
 ### Look up Later
 - DateTime vs. DateTimeOffset
+
+---
+
+*Tutorial Checkpoint:* 1:04:59
