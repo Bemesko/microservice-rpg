@@ -3,6 +3,6 @@ Content-Type: application/json
 
 {
     "name": "Apple",
-    # "description": "Repels doctors for a 24 hour period after consumption",
+    "description": "Repels doctors for a 24 hour period after consumption",
     "price": 1
 }

@@ -9,6 +9,7 @@ namespace Play.Catalog.Service.Controllers;
 [Route("api/[controller]")]
 public class ItemsController : ControllerBase
 {
+    //TODO: See if I can use dependency injection with this
     private readonly ItemsRepository itemsRepository = new();
 
     [HttpGet]

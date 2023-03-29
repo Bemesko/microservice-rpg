@@ -52,6 +52,9 @@ var updatedItem = existingItem with
     - Won't need ACID (Atomicity, Consistency, Isolation, Durability) guarantees
     - No complex queries
     - Need low latency, high availability and high scalability
+- mongodb quickstart:
+
+    docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
