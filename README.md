@@ -86,7 +86,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
-- Order of precedence for configuration sources
+- Order of precedence for configuration sources: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#default-application-configuration-sources
   - I know `appsettings.Development.json` overrides `appsettings.json` but I want the full picture with other sources (important information for deployment)
 
 ---
