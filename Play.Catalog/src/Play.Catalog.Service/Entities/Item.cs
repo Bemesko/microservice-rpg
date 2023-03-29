@@ -1,3 +1,6 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace Play.Catalog.Service.Entities;
 
 public class Item
