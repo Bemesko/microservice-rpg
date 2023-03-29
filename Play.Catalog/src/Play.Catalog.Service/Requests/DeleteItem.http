@@ -1,3 +1,3 @@
-@Id = 93d9e984-c3c9-4a1f-b41d-45399e58f057
+@Id = 75c8548d-173f-457d-aa36-6537655a8902
 
 DELETE http://localhost:5062/api/Items/{{Id}}

@@ -1,4 +1,4 @@
-@id = 748e3dc9-224e-44d3-a345-1dd67e494e83
+@id = 75c8548d-173f-457d-aa36-6537655a8902
 
 PUT http://localhost:5062/api/items/{{id}} HTTP/1.1
 Content-Type: application/json

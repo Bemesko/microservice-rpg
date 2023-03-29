@@ -56,7 +56,39 @@ var updatedItem = existingItem with
 
     docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
 
+---
+
+## Tutorial Notes, Day 3
+- Application behaves weirdly if the database is not running, maybe handle this exception as well
+- Dependency Injection
+  - A big deal in .NET since almost every tutorial talks about it
+  - If a class uses another class, put it in the class' constructor as a parameter and let some central code handle the instantiation and assignment of it
+  - Dependency Inversion Principle (D from SOLID) => Classes should call abstractions of their dependencies instead of their concrete implementations (interfaces vs. concrete classes)
+  - To do dependency injection, someone needs to instantiate the classe passing the right instances as parameters
+    - This is the job of a Service Container (in .NET is the IServiceProvider class)
+    - All dependencies need to be registered in it, and when it needs to it creates or fecthes an instance of the dependency class to put into the dependant
+  - Configuration
+    - At this point in the code, it is talking to MongoDB hardcoding a connection string in the code
+    - Supported ASP.NET Core Configuration Sources
+      - `appsettings.json`, `appsettings.Development.json`
+      - Command line arguments
+      - Environment variables
+      - Local secrets
+      - Cloud
+  - General rule of thumb: avoid normal classes instantiating other classes and leave that job for the pros
+- VSCode has its own "Extract Interface" feature that I just learned about now
+- Consuming `appsettings.json` in the code
+  - Create classes for each section so that they can be referred to programatically (see `Settings` directory)
+- Expression body definition:
+```csharp
+public string ConnectionString => $"mongodb://{Host}:{Port}";
+```
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
+- Order of precedence for configuration sources
+  - I know `appsettings.Development.json` overrides `appsettings.json` but I want the full picture with other sources (important information for deployment)
 
 ---
+
+Tutorial Checkpoint 2:08:40
