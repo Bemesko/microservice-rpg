@@ -2,6 +2,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using Play.Catalog.Service.Entities;
 using Play.Catalog.Service.Options;
 using Play.Catalog.Service.Repositories;
 
@@ -20,7 +21,11 @@ builder.Services.AddSingleton(serviceProvider =>
     return mongoClient.GetDatabase(serviceOptions.ServiceName);
 });
 
-builder.Services.AddSingleton<IRepository, MongoRepository>();
+builder.Services.AddSingleton<IRepository<Item>>(serviceProvider =>
+{
+    var database = serviceProvider.GetService<IMongoDatabase>();
+    return new MongoRepository<Item>(database, "items");
+});
 
 // Add services to the container.
 builder.Services.AddControllers(options =>
