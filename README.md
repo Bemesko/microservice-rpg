@@ -99,4 +99,4 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 
 ---
 
-Tutorial Checkpoint 2:31:41
+Tutorial Checkpoint 2:59:30

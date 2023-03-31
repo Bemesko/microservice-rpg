@@ -20,7 +20,7 @@ builder.Services.AddSingleton(serviceProvider =>
     return mongoClient.GetDatabase(serviceOptions.ServiceName);
 });
 
-builder.Services.AddSingleton<IItemsRepository, ItemsRepository>();
+builder.Services.AddSingleton<IRepository, MongoRepository>();
 
 // Add services to the container.
 builder.Services.AddControllers(options =>
