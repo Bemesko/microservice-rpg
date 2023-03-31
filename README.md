@@ -84,6 +84,14 @@ var updatedItem = existingItem with
 public string ConnectionString => $"mongodb://{Host}:{Port}";
 ```
 
+## Tutorial Notes, Day 4
+- Code that can be repeated accross microservices: 
+  - Repository
+  - Settings
+  - Service Broker
+  - Instrumentation
+  - Good practice: keep these implementations in a separate library and reference it with a nuGet package
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
 - Order of precedence for configuration sources: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#default-application-configuration-sources
