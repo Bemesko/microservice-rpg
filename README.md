@@ -92,11 +92,19 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
   - Instrumentation
   - Good practice: keep these implementations in a separate library and reference it with a nuGet package
 
+## Tutorial Notes, Day 6
+- Was worried that the implementation of Extensions for the IServiceCollection wouldn't work, but not only did it work, it also helped me understand what the builder class does in `Program.cs`. Still didn't get 100% how it works behind the scenes though.
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
 - Order of precedence for configuration sources: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#default-application-configuration-sources
   - I know `appsettings.Development.json` overrides `appsettings.json` but I want the full picture with other sources (important information for deployment)
+- What the `this` is doing in this parameter list
+```csharp
+AddMongo(this IServiceCollection services)
+```
+  - Theory: the `this` makes so that this method can be called like `services.AddMongo` and the value for the service will be filled automatically
 
 ---
 
-Tutorial Checkpoint 2:59:30
+Tutorial Checkpoint 3:09:49
