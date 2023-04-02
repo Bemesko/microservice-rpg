@@ -1,4 +1,4 @@
-namespace Play.Catalog.Service.Options;
+namespace Play.Common.Options;
 
 public class ServiceOptions
 {
