@@ -100,6 +100,8 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 - `dotnet nuget add source <path> -n <Play>` to add a local folder as a nuget directory
   - This path needs to be absolute
 - `dotnet nuget list source` to show all nuget sources
+- Docker compose seems like it would be very useful to learn as a middleground between Dockerfiles and Kubernetes specifications
+- `docker-compose up -d` to run docker compose without sending output to console
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
