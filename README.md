@@ -95,6 +95,11 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 ## Tutorial Notes, Day 6
 - Was worried that the implementation of Extensions for the IServiceCollection wouldn't work, but not only did it work, it also helped me understand what the builder class does in `Program.cs`. Still didn't get 100% how it works behind the scenes though.
 
+## Tutorial Notes, Day 7
+- `dotnet pack -o <output folder>` to compile a class library into a nuget package
+- `dotnet nuget add source <path> -n <Play>` to add a local folder as a nuget directory
+- `dotnet nuget list source` to show all nuget sources
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
 - Order of precedence for configuration sources: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#default-application-configuration-sources
