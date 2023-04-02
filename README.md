@@ -98,6 +98,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 ## Tutorial Notes, Day 7
 - `dotnet pack -o <output folder>` to compile a class library into a nuget package
 - `dotnet nuget add source <path> -n <Play>` to add a local folder as a nuget directory
+  - This path needs to be absolute
 - `dotnet nuget list source` to show all nuget sources
 
 ## Look up Later
