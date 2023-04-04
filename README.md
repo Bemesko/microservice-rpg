@@ -105,6 +105,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
+  - Answer: `DateTime` by itself doesn't store time zone information, while `DateTimeOffset` does
 - Order of precedence for configuration sources: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#default-application-configuration-sources
   - I know `appsettings.Development.json` overrides `appsettings.json` but I want the full picture with other sources (important information for deployment)
 - What the `this` is doing in this parameter list
@@ -112,6 +113,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 AddMongo(this IServiceCollection services)
 ```
   - Theory: the `this` makes so that this method can be called like `services.AddMongo` and the value for the service will be filled automatically
+  - This is called an Extension Method. See: https://stackoverflow.com/questions/846766/use-of-this-keyword-in-formal-parameters-for-static-methods-in-c-sharp
 
 ---
 
