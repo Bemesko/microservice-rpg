@@ -28,4 +28,33 @@ public class ItemsController : ControllerBase
 
         return Ok(items);
     }
+
+    [HttpPost]
+    public async Task<ActionResult> PostAsync(GrantItemsDto grantItemsDto)
+    {
+        var inventoryItem = await _itemsRepository.GetAsync(
+            item =>
+            item.UserId == grantItemsDto.UserId &&
+            item.CatalogItemId == grantItemsDto.CatalogItemId);
+
+        if (inventoryItem == null)
+        {
+            inventoryItem = new InventoryItem
+            {
+                CatalogItemId = grantItemsDto.CatalogItemId,
+                UserId = grantItemsDto.UserId,
+                Quantity = grantItemsDto.Quantity,
+                AcquiredDate = DateTimeOffset.Now
+            };
+
+            await _itemsRepository.CreateAsync(inventoryItem);
+        }
+        else
+        {
+            inventoryItem.Quantity += grantItemsDto.Quantity;
+            await _itemsRepository.UpdateAsync(inventoryItem);
+        }
+
+        return Ok();
+    }
 }
