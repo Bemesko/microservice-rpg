@@ -158,6 +158,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
   - MassTransit
     - Distributed app framework for .NET that supports RabbitMQ, among other message brokers
     - Separates between publishers and consumers
+- `dotnet add reference <path>` Adds a reference to another project (csproj) into the project on the current directory
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
@@ -183,4 +184,4 @@ AddMongo(this IServiceCollection services)
 
 ---
 
-Tutorial Checkpoint 4:56:38
+Tutorial Checkpoint 05:08:20
