@@ -159,6 +159,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
     - Distributed app framework for .NET that supports RabbitMQ, among other message brokers
     - Separates between publishers and consumers
 - `dotnet add reference <path>` Adds a reference to another project (csproj) into the project on the current directory
+- Use `{ get; init; }` to make a class attribute read only, essentially
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
@@ -184,4 +185,4 @@ AddMongo(this IServiceCollection services)
 
 ---
 
-Tutorial Checkpoint 05:08:20
+Tutorial Checkpoint 05:22:21
