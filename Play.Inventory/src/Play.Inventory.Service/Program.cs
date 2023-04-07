@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<CatalogClient>(client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5062");
+    client.BaseAddress = new Uri("http://localhost:5062/api/");
 });
 
 builder.Services.AddMongo()
