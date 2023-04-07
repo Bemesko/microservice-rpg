@@ -6,13 +6,19 @@ using Polly.Timeout;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMongo()
+    .AddMongoRepository<InventoryItem>("inventoryitems");
+
+Random jitterer = new();
+
 builder.Services.AddHttpClient<CatalogClient>(client =>
 {
     client.BaseAddress = new Uri("http://localhost:5062/api/");
 })
 .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().WaitAndRetryAsync(
     5,
-    retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+    retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                    + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)),
     onRetry: (outcome, timespan, retryAttempt) =>
     {
         Console.WriteLine($"Delaying for {timespan.TotalSeconds} seconds, then making retry {retryAttempt}");
@@ -20,8 +26,7 @@ builder.Services.AddHttpClient<CatalogClient>(client =>
 ))
 .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
 
-builder.Services.AddMongo()
-    .AddMongoRepository<InventoryItem>("inventoryitems");
+
 
 // Add services to the container.
 builder.Services.AddControllers();

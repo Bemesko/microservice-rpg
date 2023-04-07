@@ -120,6 +120,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
     - Setting appropriate timeouts (fail fast)
     - Retries with exponential backoff (longer wait between each retry)
 - Polly => Microsoft Package for HTTP client policies, such as setting timeouts and dealing with transient errors (network failures, http 5xx and 408 status)
+- When using exponential retry times, it's a good idea to add a bit of randomness to the amount of time between retries, so multiple instances of the service don't end up causing peaks of requests all at once
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
