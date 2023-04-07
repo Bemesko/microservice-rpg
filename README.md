@@ -114,6 +114,12 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
   - asynchronous: response is not sent immediately
 - VSCode generates debugging assets per workspace, so having everything in a single workspace makes debugging multiple services a bit clunky
 
+## Tutorial Notes, Day 11
+- Problems that can happen when microservices communicate
+  - Partial failures **will happen**, so handling them is not optional
+    - Setting appropriate timeouts (fail fast)
+    - Retries with exponential backoff (longer wait between each retry)
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
   - Answer: `DateTime` by itself doesn't store time zone information, while `DateTimeOffset` does
@@ -128,4 +134,4 @@ AddMongo(this IServiceCollection services)
 
 ---
 
-Tutorial Checkpoint 4:00:20
+Tutorial Checkpoint 4:20:49
