@@ -103,6 +103,17 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 - Docker compose seems like it would be very useful to learn as a middleground between Dockerfiles and Kubernetes specifications
 - `docker-compose up -d` to run docker compose without sending output to console
 
+## Tutorial Notes, Day 10
+- Types of communication between microservices
+  - synchronous: client waits for a response
+    - Thread that calls other service may be blocking or non-blocking (callback)
+    - Implementations
+      - REST + HTTP is the traditional approach
+      - gRPC can be used for inter-service communication
+        - Most efficient than REST, not everything supports it
+  - asynchronous: response is not sent immediately
+- VSCode generates debugging assets per workspace, so having everything in a single workspace makes debugging multiple services a bit clunky
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
   - Answer: `DateTime` by itself doesn't store time zone information, while `DateTimeOffset` does

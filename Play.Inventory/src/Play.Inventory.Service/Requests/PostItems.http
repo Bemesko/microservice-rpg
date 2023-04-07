@@ -1,0 +1,10 @@
+@userId = "dcbc6eeb-42a9-48f7-b50f-0b6d877486bd"
+
+POST http://localhost:5027/api/Items
+Content-Type: application/json
+
+{
+  "userId": {{userId}},
+  "catalogItemId": "09f72941-671a-4575-a39c-78c2d5d926b5",
+  "quantity": 4
+}

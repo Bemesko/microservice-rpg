@@ -1,0 +1,3 @@
+@userId = dcbc6eeb-42a9-48f7-b50f-0b6d877486bd
+
+GET http://localhost:5027/api/Items?userId={{userId}}
