@@ -16,12 +16,25 @@ builder.Services.AddHttpClient<CatalogClient>(client =>
     client.BaseAddress = new Uri("http://localhost:5062/api/");
 })
 .AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().WaitAndRetryAsync(
-    5,
-    retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-                    + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)),
+    retryCount: 5,
+    sleepDurationProvider: retryAttempt =>
+        TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+        + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)),
     onRetry: (outcome, timespan, retryAttempt) =>
     {
         Console.WriteLine($"Delaying for {timespan.TotalSeconds} seconds, then making retry {retryAttempt}");
+    }
+))
+.AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+    handledEventsAllowedBeforeBreaking: 3,
+    durationOfBreak: TimeSpan.FromSeconds(15),
+    onBreak: (outcome, timespan) =>
+    {
+        Console.WriteLine($"Opening the circuit for {timespan.TotalSeconds} seconds...");
+    },
+    onReset: () =>
+    {
+        Console.WriteLine($"Closing the circuit...");
     }
 ))
 .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));

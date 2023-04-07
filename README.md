@@ -121,6 +121,15 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
     - Retries with exponential backoff (longer wait between each retry)
 - Polly => Microsoft Package for HTTP client policies, such as setting timeouts and dealing with transient errors (network failures, http 5xx and 408 status)
 - When using exponential retry times, it's a good idea to add a bit of randomness to the amount of time between retries, so multiple instances of the service don't end up causing peaks of requests all at once
+- Resource exhaustion and the **circuit breaker pattern**
+  - Have been hearing about this one for a while, excited to find out what it means
+  - Resource exhaustion happens when an applications retries so many times it uses all available threads
+  - Circuit breaker prevents the service from performing an operation that's likely to fail
+    - All requests the service makes are sent through and monitored by the circuit breaker
+    - After X amount of failed requests, the circuit breaker immediately fails all new requests from the service, for Y amount of time (opening the circuit)
+    - After it waits a bit, it will let some requests pass and monitor their state, and if everything's in order it will close the circuit again and let everything pass
+    - This helps the caller and callee services from being overwhelmed
+  - Using Polly, this pattern can be implemeted as a transiend HTTP error policy
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
@@ -146,4 +155,4 @@ AddMongo(this IServiceCollection services)
 
 ---
 
-Tutorial Checkpoint 4:31:22
+Tutorial Checkpoint 4:56:38
