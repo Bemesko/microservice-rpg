@@ -131,6 +131,34 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
     - This helps the caller and callee services from being overwhelmed
   - Using Polly, this pattern can be implemeted as a transiend HTTP error policy
 
+### Asynchronous Communication
+
+- Problems with synchronous communication
+  - If a service depends on many others, the full call request cycle starts taking too long
+  - Failure in only 1 service results in a cascade failure for everything
+  - For every service dependency, the actual SLA decreases a bit
+- Asynchronous communication style
+  - Client doesn't wait for a response
+  - Generally involves a message broker with high availability
+  - Messages can be received my:
+    - a single receiver (asynchronous commands)
+    - multiple receivers (publish/subscribe events)
+- Asynchrnous communication enables microservice autonomy
+  - All services are coupled only to the message broker instead of the other services
+  - If one service fails, only it is affected, since everything is decoupled from it
+  - As a result, a high SLA can be realistically maintained
+- Asynchronous propagation of data
+  - Scenario: Inventory service needs data from the Catalog service to return its response
+  - Instead of requesting data each time, the Inventory service can keep its own storage of the data it needs from the Inventory service and subscribe to all messages from the message broker that are sent whenever a new item is registered into the Catalog service
+  - Inventory service doesn't depend on the catalog service to return its requests, therefore making it more available and eliminating delays
+- Implementing asynchronous communication
+  - RabbitMQ
+    - One implementation of a message broker that can be run locally
+    - Messages are published to an exchange, after which RabbitMQ routes each message to one or more appropriate queues, which send the message to its consumers
+  - MassTransit
+    - Distributed app framework for .NET that supports RabbitMQ, among other message brokers
+    - Separates between publishers and consumers
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
   - Answer: `DateTime` by itself doesn't store time zone information, while `DateTimeOffset` does
