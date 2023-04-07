@@ -13,7 +13,7 @@ public class CatalogClient
 
     public async Task<IReadOnlyCollection<CatalogItemDto>> GetCatalogItemsAsync()
     {
-        var items = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<CatalogItemDto>>("Items");
+        var items = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<CatalogItemDto>>("api/Items");
         return items;
     }
 }
