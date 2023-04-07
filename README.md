@@ -119,12 +119,23 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
   - Partial failures **will happen**, so handling them is not optional
     - Setting appropriate timeouts (fail fast)
     - Retries with exponential backoff (longer wait between each retry)
+- Polly => Microsoft Package for HTTP client policies, such as setting timeouts
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
   - Answer: `DateTime` by itself doesn't store time zone information, while `DateTimeOffset` does
 - Order of precedence for configuration sources: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#default-application-configuration-sources
   - I know `appsettings.Development.json` overrides `appsettings.json` but I want the full picture with other sources (important information for deployment)
+  - Order is as follows:
+    1. Command line arguments
+    2. Non prefixed environment variables
+    3. User secrets (in Development environment)
+    4. `appsettings.{Environment}.json`
+    5. `appsettings.json`
+    6. Default host configuration sources
+       1. Command line arguments
+       2. `DOTNET_` prefixed environment variables
+       3. `ASPNETCORE_` prefixed environment variables
 - What the `this` is doing in this parameter list
 ```csharp
 AddMongo(this IServiceCollection services)
@@ -134,4 +145,4 @@ AddMongo(this IServiceCollection services)
 
 ---
 
-Tutorial Checkpoint 4:20:49
+Tutorial Checkpoint 4:31:22
