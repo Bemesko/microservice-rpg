@@ -119,7 +119,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
   - Partial failures **will happen**, so handling them is not optional
     - Setting appropriate timeouts (fail fast)
     - Retries with exponential backoff (longer wait between each retry)
-- Polly => Microsoft Package for HTTP client policies, such as setting timeouts
+- Polly => Microsoft Package for HTTP client policies, such as setting timeouts and dealing with transient errors (network failures, http 5xx and 408 status)
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
