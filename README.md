@@ -161,6 +161,9 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 - `dotnet add reference <path>` Adds a reference to another project (csproj) into the project on the current directory
 - Use `{ get; init; }` to make a class attribute read only, essentially
 
+## Tutorial Notes, Day 12
+- MassTransit apparently has some different configuration options from v8 (.NET 6) onwards, so no need to explicitly call `AddMassTransitHostedServices` in `Program.cs`
+
 ## Look up Later
 - DateTime vs. DateTimeOffset
   - Answer: `DateTime` by itself doesn't store time zone information, while `DateTimeOffset` does

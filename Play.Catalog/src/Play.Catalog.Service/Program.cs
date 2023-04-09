@@ -9,8 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json");
 
 builder.Services.Configure<ServiceOptions>(builder.Configuration.GetSection(ServiceOptions.ServiceSettings));
-var serviceSettings = builder.Configuration.GetSection(nameof(ServiceOptions)).Get<ServiceOptions>();
-
 builder.Services.Configure<MongoDbOptions>(builder.Configuration.GetSection(MongoDbOptions.MongoDbSettings));
 
 builder.Services.AddMongo()
@@ -22,7 +20,7 @@ builder.Services.AddMassTransit(x =>
     {
         var rabbitMqOptions = builder.Configuration.GetSection(nameof(RabbitMQOptions)).Get<RabbitMQOptions>();
         configurator.Host(rabbitMqOptions.Host);
-        configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings.ServiceName, false));
+        configurator.ConfigureEndpoints(context);
     });
 });
 
