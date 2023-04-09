@@ -26,8 +26,6 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
-builder.Services.AddMassTransitHostedService();
-
 // Add services to the container.
 builder.Services.AddControllers(options =>
 {
