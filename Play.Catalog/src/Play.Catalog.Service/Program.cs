@@ -1,6 +1,5 @@
 using MassTransit;
 using Play.Catalog.Service.Entities;
-using Play.Catalog.Service.Options;
 using Play.Common.MassTransit;
 using Play.Common.MongoDb;
 using Play.Common.Options;

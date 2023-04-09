@@ -163,6 +163,7 @@ public string ConnectionString => $"mongodb://{Host}:{Port}";
 
 ## Tutorial Notes, Day 12
 - MassTransit apparently has some different configuration options from v8 (.NET 6) onwards, so no need to explicitly call `AddMassTransitHostedServices` in `Program.cs`
+- `dotnet pack -p:PackageVersion=1.1.0 -o ..\..\..\packages\` to specify a package version with creating a nuget package
 
 ## Look up Later
 - DateTime vs. DateTimeOffset
