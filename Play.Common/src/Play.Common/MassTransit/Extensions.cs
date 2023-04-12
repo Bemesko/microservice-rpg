@@ -20,6 +20,10 @@ public static class Extensions
                 var rabbitMqOptions = configuration.GetSection(nameof(RabbitMQOptions)).Get<RabbitMQOptions>();
                 configurator.Host(rabbitMqOptions.Host);
                 configurator.ConfigureEndpoints(context);
+                configurator.UseMessageRetry(retryConfigurator =>
+                {
+                    retryConfigurator.Interval(3, TimeSpan.FromSeconds(5));
+                });
             });
         });
 
