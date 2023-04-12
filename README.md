@@ -189,4 +189,4 @@ AddMongo(this IServiceCollection services)
 
 ---
 
-Tutorial Checkpoint 05:42:44
+Tutorial Checkpoint 06:14:69
