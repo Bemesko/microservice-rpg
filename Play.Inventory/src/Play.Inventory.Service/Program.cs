@@ -5,6 +5,7 @@ using Play.Inventory.Service.Entities;
 using Polly;
 using Polly.Timeout;
 
+const string AllowedOriginSetting = "AllowedOrigin";
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMongo()
@@ -28,6 +29,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseCors(server =>
+    {
+        server.WithOrigins(builder.Configuration[AllowedOriginSetting])
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 }
 
 app.UseHttpsRedirection();
