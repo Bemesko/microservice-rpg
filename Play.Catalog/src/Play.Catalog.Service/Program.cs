@@ -4,6 +4,8 @@ using Play.Common.MassTransit;
 using Play.Common.MongoDb;
 using Play.Common.Options;
 
+const string AllowedOriginSetting = "AllowedOrigin";
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("appsettings.json");
@@ -32,6 +34,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseCors(server =>
+    {
+        server.WithOrigins(builder.Configuration[AllowedOriginSetting])
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 }
 
 app.UseHttpsRedirection();
