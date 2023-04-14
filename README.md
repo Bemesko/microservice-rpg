@@ -1,8 +1,38 @@
 # Microservice RPG
 
-Sample project for studying microservices in .NET. Consists of several backend services to handle a shop system in an RPG.
+This a project I made following a (very long) YouTube tutorial/course to learn more about building microservice-based applications. The architecture of the services is described below:
+
+![](docs/diagram.png)
 
 **Link to Tutorial:** https://www.youtube.com/watch?v=CqCDOosvZIk
+
+I provided all the notes I took following the videos further down this README. Judging by the size of it I'd say it was pretty productive.
+
+## Features/Technologies
+- Microservices made with .NET 7
+- Each service has its own storage using MongoDB
+- Services communicate asynchronously via RabbitMQ messages
+- Frontend made in React.js
+  - This is the only component I didn't make, since it was already provided for the course (the focus of the tutorials was on building the microservices)
+
+## Post Tutorial Checklist
+
+I've finished the course but there are some lingering ideas for these applications I still want to make.
+
+- [ ] Build my own version of the Frontend (also in React)
+- [ ] Dockerize all applications
+- [ ] A Hollistic docker-compose to run all this on the flip of a switch
+- [ ] Helm chart to run these services on a Kubernetes cluster
+- [ ] Maybe a new *User* service made from scratch
+
+## Screenshots
+![](docs/main-page.png)
+![](docs/catalog.png)
+![](/docs/catalog-api.png)
+![](docs/inventory.png)
+![](docs/inventory-api.png)
+
+---
 
 ## Tutorial Notes, Day 1
 
